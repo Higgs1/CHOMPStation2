@@ -4,7 +4,7 @@ ENV PORT 2303
 
 COPY . .
 
-RUN DreamMaker -max_errors 0 -verbose vorestation.dme | dm-progress 640
+RUN make vorestation.dmb
 
 EXPOSE ${PORT}
 

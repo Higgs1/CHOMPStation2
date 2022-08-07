@@ -4,9 +4,7 @@ PORT ?= 2303
 .PHONY: mostlyclean clean it_so
 
 vorestation.dmb: vorestation.dme
-	DreamMaker -verbose -max_errors 0 '$<' \
-		| stdbuf -o0 grep -v '^including ' \
-		| pv -pfeEts 640
+	DreamMaker -max_errors 0 -verbose vorestation.dme | dm-progress 640
 
 it_so: vorestation.dmb
 	DreamDaemon '$<' '$(PORT)' -close -map-threads on -threads on -trusted -verbose
